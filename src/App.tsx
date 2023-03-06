@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./containers";
+
 function App() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
