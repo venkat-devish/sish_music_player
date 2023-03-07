@@ -1,4 +1,13 @@
 .big-hits {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
+
+    &__heading {
+        color: var(--text-color-primary);
+        margin: 2rem 0;
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
 }

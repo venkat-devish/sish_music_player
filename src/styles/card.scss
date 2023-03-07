@@ -2,20 +2,43 @@
     display: flex;
     justify-content: flex-start;
 
-
-
     &__info {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        background-color: #fff;
+        background-color: var(--color-card-bg);
         padding: .5rem;
+        border-radius: 7px;
+        height: var(--card-height);
+        cursor: pointer;
+        color: var(--text-color-primary);
+        box-shadow: var(--color-shadow-bg);
+        transition: all .4s;
+
+        &:hover {
+            background-color: var(--color-card-bg-light);
+        }
+    }
+
+    &__details {
+        padding: .5rem;
+
+        &--title {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        &--description {
+            font-size: 0.8rem;
+            color: #918f8f;
+            font-weight: 600;
+        }
     }
 
     img {
-        // padding: 0.5rem;
-        height: 156px;
-        width: 156px;
+        padding: 0.5rem;
+        height: 160px;
+        width: 160px;
     }
 
 }
