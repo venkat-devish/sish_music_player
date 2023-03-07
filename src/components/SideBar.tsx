@@ -1,9 +1,10 @@
 import logoIcon from "../assets/sish-logo.png";
 import "../styles/side_bar.scss";
-import { Link } from "react-router-dom";
-import { primaryButtons } from "../utilities/sidebar-buttons";
+import { NavLink } from "react-router-dom";
+import { primaryButtons, secondaryButtons } from "../utilities/sidebar-buttons";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material";
+import { Divider } from "../organisms";
 
 type PrimaryButtonProps = {
   Title: string;
@@ -18,17 +19,32 @@ const SideBar = () => {
     <div className="sidebar">
       <img src={logoIcon} alt="Logo" />
       <div className="sidebar__content">
-        {primaryButtons.map(({ Title, Path, Icon }: PrimaryButtonProps) => {
-          return (
-            <div className="sidebar__actions">
-              <Link to={`${Path}`} className="sidebar__button">
-                <Icon />
-                <p>{Title}</p>
-              </Link>
-            </div>
-          );
-        })}
+        <div className="sidebar__content--primary">
+          {primaryButtons.map(({ Title, Path, Icon }: PrimaryButtonProps) => {
+            return (
+              <div key={Path} className="sidebar__actions">
+                <NavLink to={`${Path}`} className="sidebar__button">
+                  <Icon />
+                  <p>{Title}</p>
+                </NavLink>
+              </div>
+            );
+          })}
+        </div>
+        <div className="sidebar__content--secondary">
+          {secondaryButtons.map(({ Title, Path, Icon }: PrimaryButtonProps) => {
+            return (
+              <div key={Path} className="sidebar__actions">
+                <NavLink to={`${Path}`} className="sidebar__button">
+                  <Icon />
+                  <p>{Title}</p>
+                </NavLink>
+              </div>
+            );
+          })}
+        </div>
       </div>
+      <Divider />
     </div>
   );
 };

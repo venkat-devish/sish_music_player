@@ -1,0 +1,21 @@
+.card {
+    display: flex;
+    justify-content: flex-start;
+
+
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #fff;
+        padding: .5rem;
+    }
+
+    img {
+        // padding: 0.5rem;
+        height: 156px;
+        width: 156px;
+    }
+
+}

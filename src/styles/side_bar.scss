@@ -2,6 +2,8 @@
     background-color: var(--color-bg);
     min-width: var(--nav-bar-width);
     padding: 2rem 1rem;
+    position: fixed;
+    height: 100vh;
 
     img {
         width: 72%;
@@ -13,18 +15,16 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         gap: 1rem;
+
+        &--primary {
+            margin-bottom: 2rem;
+        }
     }
 
     &__actions {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-
-        p {
-            color: #fff;
-        }
+        margin-bottom: 1rem;
     }
 
     &__button {
@@ -33,5 +33,12 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        text-decoration: none;
+
+
+        p {
+            font-size: 0.8125rem;
+            font-weight: 700;
+        }
     }
 }
