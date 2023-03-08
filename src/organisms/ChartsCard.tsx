@@ -1,14 +1,21 @@
 import thumbnail from "../assets/thumbnail.jpg";
 import "../styles/card.scss";
+import { titleSubstring } from "../utilities/format-modifier";
 
-const ChartsCard = () => {
+type ChartsCardType = {
+  imageUrl: string;
+  title: string;
+  description: string;
+};
+
+const ChartsCard = ({ imageUrl, title, description }: ChartsCardType) => {
   return (
     <div className="card">
       <div className="card__info">
-        <img src={thumbnail} alt="thumbnail" />
+        <img src={imageUrl ? imageUrl : thumbnail} alt="thumbnail" />
         <div className="card__details">
-          <div className="card__details--title">Title</div>
-          <div className="card__details--description">DESCRIPTION</div>
+          <div className="card__details--title">{titleSubstring(title)}</div>
+          <div className="card__details--description">{description}</div>
         </div>
       </div>
     </div>
