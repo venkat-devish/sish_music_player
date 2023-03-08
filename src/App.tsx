@@ -18,7 +18,6 @@ function App() {
   useEffect(() => {
     dispatch(getRecommendedSongs());
     dispatch(getGlobalCharts());
-    dispatch(getSearchResults("Stay"));
   }, []);
 
   return (

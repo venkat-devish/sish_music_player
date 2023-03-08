@@ -19,13 +19,12 @@ const searchDataSlice = createSlice({
         builder.addCase(getSearchResults.pending, (state) => {
             state.isLoading = true
         }).addCase(getSearchResults.fulfilled, (state, action) => {
+            console.log(action.payload)
             state.isLoading = false;
-            state.results.push(action.payload.result)
+            state.results.push(action.payload)
         })
     }
 })
 
-export const isDataFetching = (state: any) => state.search.isLoading
-export const searchResults = (state: any) => state.search.results
 
 export default searchDataSlice.reducer

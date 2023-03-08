@@ -1,4 +1,26 @@
 .search {
     background-color: var(--color-discover-bg);
     width: 100%;
+    margin-left: var(--nav-bar-width);
+    padding: 2rem;
+
+    &__logo {
+        position: absolute;
+        color: var(--color-b);
+        top: 2.6rem;
+        left: 17.5rem;
+    }
+
+    input {
+        min-width: 22rem;
+        padding: .7rem;
+        border-radius: 110px;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        position: relative;
+        padding-left: 2rem;
+    }
+
+
 }
