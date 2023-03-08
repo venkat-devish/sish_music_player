@@ -3,8 +3,13 @@ import { Dispatch, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Discover, SideBar } from "./components";
+import NowPlaying from "./components/NowPlaying";
 import { CreatePlaylist, Library, Liked, Search } from "./containers";
-import { getRecommendedSongs } from "./data/api/recommendedData";
+import {
+  getGlobalCharts,
+  getRecommendedSongs,
+  getSearchResults,
+} from "./data/api/getChartsData";
 import "./styles/app.scss";
 
 function App() {
@@ -12,7 +17,10 @@ function App() {
 
   useEffect(() => {
     dispatch(getRecommendedSongs());
+    dispatch(getGlobalCharts());
+    dispatch(getSearchResults("Stay"));
   }, []);
+
   return (
     <div className="app">
       <SideBar />

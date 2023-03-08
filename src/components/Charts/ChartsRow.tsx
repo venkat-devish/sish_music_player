@@ -3,18 +3,20 @@ import { ChartsCard } from "../../organisms";
 import { chartsData, isLoading } from "../../redux/features/recommendedSlice";
 import "../../styles/bighits.scss";
 
-const BiggestHits = () => {
-  const chartsDataRef = useSelector(chartsData);
-  const isFetching = useSelector(isLoading);
-  console.log(chartsDataRef);
-  // console.log(isFetching);
+type ChartsRowState = {
+  isFetching: boolean;
+  chartsDataRef: any[];
+  heading: string;
+};
+
+const ChartsRow = ({ isFetching, chartsDataRef, heading }: ChartsRowState) => {
   return (
     <>
       {isFetching ? (
         <h1>Loading...</h1>
       ) : (
         <>
-          <h1 className="big-hits__heading">Made for You</h1>
+          <h1 className="big-hits__heading">{heading}</h1>
           <div className="big-hits">
             {chartsDataRef.map((item: any) => {
               const { key, images, title, subtitle } = item;
@@ -34,4 +36,4 @@ const BiggestHits = () => {
   );
 };
 
-export default BiggestHits;
+export default ChartsRow;

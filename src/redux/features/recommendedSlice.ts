@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getRecommendedSongs } from "../../data/api/recommendedData"
-import { ReducerType } from "../store";
+import { getRecommendedSongs } from "../../data/api/getChartsData"
 
 export interface RecommendedState {
     isLoading: boolean;
     topCharts: any[];
-
 }
 
 const initialState = {
@@ -24,16 +22,14 @@ const recommendedSlice = createSlice({
         })
         builder.addCase(getRecommendedSongs.fulfilled, (state, action) => {
             const { tracks } = action.payload
-            console.log(action.payload)
             state.isLoading = false;
-            state.topCharts = tracks
+            state.topCharts = tracks.slice(1, 20)
         })
     }
 })
 
 export const isLoading = (state: any): boolean => state.recommended.isLoading;
 export const chartsData = (state: any): any[] => state.recommended.topCharts;
-console.log(chartsData)
 
 export default recommendedSlice.reducer
 
