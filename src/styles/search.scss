@@ -12,10 +12,13 @@
         left: 17.5rem;
     }
 
-    // &__grid {
-    //     display: grid;
-    //     grid-template-columns: repeat(6, 1fr);
-    // }
+    &__icon {}
+
+    &__flex {
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
 
     input {
         min-width: 22rem;

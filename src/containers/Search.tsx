@@ -12,6 +12,7 @@ import {
   globalTopSearchPopCharts,
   isGlobalLoading,
 } from "../redux/features/globalChartsSlice";
+import { ResultsCard } from "../organisms";
 
 const Search = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -31,6 +32,7 @@ const Search = () => {
   return (
     <div className="search">
       <input
+        className="logo"
         type="text"
         placeholder="What do you want to listen to?"
         onChange={_handleSearchInput}
@@ -46,12 +48,12 @@ const Search = () => {
             heading="Top Searched"
           />
         ) : (
-          <ChartsRow
-            isFetching={isSearchResultLoading}
-            chartsDataRef={loadedResults}
-            heading="Results"
-          />
-          // <h1>Hello</h1>
+          <ResultsCard />
+          // <ChartsRow
+          //   isFetching={isSearchResultLoading}
+          //   chartsDataRef={loadedResults}
+          //   heading="Results"
+          // />
         )}
       </div>
     </div>

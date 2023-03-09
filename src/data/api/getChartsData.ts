@@ -1,4 +1,4 @@
-import { AsyncThunkAction, createAsyncThunk, Dispatch } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getSearchOptions, globalChartsOptions, recommendedOptions } from "../../utilities/api-options";
 
@@ -13,7 +13,6 @@ export const getGlobalCharts = createAsyncThunk('global/getGlobalCharts', async 
 })
 
 export const getSearchResults = createAsyncThunk('search/getSearchResults', async (query: string) => {
-    console.log(query)
     const options = getSearchOptions(query)
     const response = await axios.request(options);
     return response.data
