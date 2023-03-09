@@ -4,13 +4,15 @@ import { getGlobalCharts } from "../../data/api/getChartsData";
 export interface GlobalChartsState {
     isLoading: boolean;
     globalCharts: any[];
-    globalPopCharts: any[]
+    globalPopCharts: any[];
+    topSearchResults: any[];
 }
 
 const initialState = {
     isLoading: false,
     globalCharts: [],
-    globalPopCharts: []
+    globalPopCharts: [],
+    topSearchResults: []
 } as GlobalChartsState
 
 const globalChartsSlice = createSlice({
@@ -23,8 +25,9 @@ const globalChartsSlice = createSlice({
         }).addCase(getGlobalCharts.fulfilled, (state, action) => {
             const { tracks } = action.payload
             state.isLoading = false;
-            state.globalCharts = tracks.slice(0, 7)
-            state.globalPopCharts = tracks.slice(8, 16)
+            state.globalCharts = tracks.slice(6, 12)
+            state.globalPopCharts = tracks.slice(13, 19)
+            state.topSearchResults = tracks.slice(0, 6)
         })
     }
 })
@@ -32,5 +35,6 @@ const globalChartsSlice = createSlice({
 export const isGlobalLoading = (state: any): boolean => state.globalCharts.isLoading;
 export const globalCharts = (state: any): any[] => state.globalCharts.globalCharts;
 export const globalPopCharts = (state: any): any[] => state.globalCharts.globalPopCharts;
+export const globalTopSearchPopCharts = (state: any): any[] => state.globalCharts.topSearchResults;
 
 export default globalChartsSlice.reducer

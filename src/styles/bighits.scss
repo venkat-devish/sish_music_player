@@ -1,5 +1,6 @@
 .big-hits {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 2rem;
 
     &__heading {

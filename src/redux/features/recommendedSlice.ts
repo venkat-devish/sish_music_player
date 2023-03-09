@@ -23,7 +23,7 @@ const recommendedSlice = createSlice({
         builder.addCase(getRecommendedSongs.fulfilled, (state, action) => {
             const { tracks } = action.payload
             state.isLoading = false;
-            state.topCharts = tracks.slice(1, 20)
+            state.topCharts = tracks.slice(1, 7)
         })
     }
 })

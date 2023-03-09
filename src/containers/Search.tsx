@@ -1,33 +1,58 @@
 import "../styles/search.scss";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { useEffect } from "react";
 import { debounce } from "../utilities/debounce";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchResults } from "../data/api/getChartsData";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-// import { searchResults } from "../redux/features/searchDataSlice";
+import { isSearching, searchResults } from "../redux/features/searchDataSlice";
+import { ChartsRow } from "../components";
+import {
+  globalCharts,
+  globalTopSearchPopCharts,
+  isGlobalLoading,
+} from "../redux/features/globalChartsSlice";
 
 const Search = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  // const loadedResults = searchResults(searchResults);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  // console.log(loadedResults);
-  const _handleSearchInput = (e: any) => {
-    setSearchTerm(e.target.value);
-    dispatch(getSearchResults(searchTerm));
-  };
+  const _handleSearchInput = debounce((e: any) => {
+    dispatch(getSearchResults(e.target.value));
+  }, 1000);
 
-  const fetchData = debounce(_handleSearchInput, 1000);
+  const isGlobalChartsFetching = useSelector(isGlobalLoading);
+  const isSearchResultLoading = useSelector(isSearching);
+  const loadedResults = useSelector(searchResults);
+  const globalTopSearchDataRef = useSelector(globalTopSearchPopCharts);
+
+  useEffect(() => {
+    dispatch(getSearchResults(""));
+  }, []);
 
   return (
     <div className="search">
       <input
         type="text"
         placeholder="What do you want to listen to?"
-        onChange={fetchData}
+        onChange={_handleSearchInput}
       />
       <div className="search__logo">
         <SearchIcon />
+      </div>
+      <div className="search__grid">
+        {loadedResults.length === 0 ? (
+          <ChartsRow
+            isFetching={isGlobalChartsFetching}
+            chartsDataRef={globalTopSearchDataRef}
+            heading="Top Searched"
+          />
+        ) : (
+          <ChartsRow
+            isFetching={isSearchResultLoading}
+            chartsDataRef={loadedResults}
+            heading="Results"
+          />
+          // <h1>Hello</h1>
+        )}
       </div>
     </div>
   );
