@@ -1,13 +1,19 @@
 import "../styles/song-card.scss";
 
-const SongCard = () => {
+type SongsCardType = {
+  images: any;
+  subtitle: string;
+  title: string;
+};
+
+const SongCard = ({ images, subtitle, title }: SongsCardType) => {
   return (
     <div className="song-card">
-      <img src="https://i.ibb.co/Y06xX3d/headset.jpg" alt="" />
+      <img src={images.coverarthq} alt="" />
       <div className="song-card__flex">
         <div className="song-card__info">
-          <div className="song-card__info--title">Side To Side</div>
-          <p className="song-card__info--artist">Ariana</p>
+          <div className="song-card__info--title">{title}</div>
+          <p className="song-card__info--artist">{subtitle.substring(0, 70)}</p>
         </div>
         <div className="song-card__time">
           <p>4:20</p>

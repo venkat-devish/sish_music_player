@@ -5,7 +5,12 @@ import { debounce } from "../utilities/debounce";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchResults } from "../data/api/getChartsData";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { isSearching, searchResults } from "../redux/features/searchDataSlice";
+import {
+  isSearching,
+  searchResults,
+  topMostResultData,
+  topResultsData,
+} from "../redux/features/searchDataSlice";
 import { ChartsRow } from "../components";
 import {
   globalCharts,
@@ -23,7 +28,10 @@ const Search = () => {
   const isGlobalChartsFetching = useSelector(isGlobalLoading);
   const isSearchResultLoading = useSelector(isSearching);
   const loadedResults = useSelector(searchResults);
+  const loadedTopResults = useSelector(topResultsData);
+  const loadedTopResult = useSelector(topMostResultData);
   const globalTopSearchDataRef = useSelector(globalTopSearchPopCharts);
+  console.log(loadedResults);
 
   useEffect(() => {
     dispatch(getSearchResults(""));
@@ -48,7 +56,10 @@ const Search = () => {
             heading="Top Searched"
           />
         ) : (
-          <ResultsCard />
+          <ResultsCard
+            topResults={loadedTopResults}
+            topMostResult={loadedTopResult}
+          />
           // <ChartsRow
           //   isFetching={isSearchResultLoading}
           //   chartsDataRef={loadedResults}

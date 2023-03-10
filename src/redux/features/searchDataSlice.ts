@@ -3,12 +3,16 @@ import { getSearchResults } from "../../data/api/getChartsData";
 
 type SearchState = {
     isLoading: boolean,
-    results: any[]
+    results: any[],
+    topResults: any[],
+    topMostResult: any[]
 }
 
 const initialState: SearchState = {
     isLoading: false,
-    results: []
+    results: [],
+    topResults: [],
+    topMostResult: []
 }
 
 const searchDataSlice = createSlice({
@@ -26,6 +30,8 @@ const searchDataSlice = createSlice({
             })
             state.isLoading = false;
             state.results = data;
+            state.topResults = data.slice(1, 6)
+            state.topMostResult = data.slice(0, 1)
         })
     }
 })
@@ -33,6 +39,8 @@ const searchDataSlice = createSlice({
 
 export const searchResults = (state: any) => state.search.results
 export const isSearching = (state: any) => state.search.isLoading;
+export const topResultsData = (state: any) => state.search.topResults;
+export const topMostResultData = (state: any) => state.search.topMostResult;
 
 
 export default searchDataSlice.reducer

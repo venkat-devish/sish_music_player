@@ -1,7 +1,12 @@
-export const titleSubstring = (title: string) => {
-    return title.length < 12 ? title : `${title.substring(0, 12)}...`
-}
-
-export const descriptionSubString = (description: string) => {
-    return description.length < 42 ? description : `${description.substring(0, 40)}...`
+export const formatModifier = (text: string, modifier: string) => {
+    switch (modifier) {
+        case 'CARD_TITLE':
+            return text.length < 12 ? text : `${text.substring(0, 12)}...`
+        case 'CARD_DESCRIPTION':
+            return text.length < 42 ? text : `${text.substring(0, 40)}...`
+        case 'TOP_SONG_TITLE':
+            return text.length < 30 ? text : `${text.substring(0, 27)}...`
+        default:
+            return text
+    }
 }
