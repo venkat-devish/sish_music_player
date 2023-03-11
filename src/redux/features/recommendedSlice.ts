@@ -6,6 +6,10 @@ export interface RecommendedState {
     topCharts: any[];
 }
 
+export type ObjectType = {
+    [index: string]: any
+}
+
 export interface RecommendedAlbumState {
     isLoading: boolean;
     recommendedAlbums: any[];
@@ -48,7 +52,7 @@ const recommendedAlbumslice = createSlice({
             .addCase(getAlbumResults.pending, (state) => {
                 state.isLoading = true;
             }).addCase(getAlbumResults.fulfilled, (state, action) => {
-                const albumData = action.payload.albums.map((item: any) => {
+                const albumData = action.payload.albums.map((item: ObjectType) => {
                     console.log(item)
                     const { artist: { name: title }, name: subtitle, cover_art_thumbnail_url: thumbnail } = item;
                     const images = { coverarthq: thumbnail }
@@ -61,10 +65,10 @@ const recommendedAlbumslice = createSlice({
     }
 })
 
-export const isLoading = (state: any): boolean => state.recommended.isLoading;
-export const chartsData = (state: any): any[] => state.recommended.topCharts;
-export const albumsData = (state: any): any[] => state.albums.recommendedAlbumsReducer.recommendedAlbums;
-export const isAlbumsLoading = (state: any): boolean => state.albums.recommendedAlbumsReducer.isLoading;
+export const isLoading = (state: any): boolean => state.recommended.recommendedSongsReducer.isLoading;
+export const chartsData = (state: any): ObjectType => state.recommended.recommendedSongsReducer.topCharts;
+export const albumsData = (state: any): ObjectType => state.recommended.recommendedAlbumsReducer.recommendedAlbums;
+export const isAlbumsLoading = (state: any): boolean => state.recommended.recommendedAlbumsReducer.isLoading;
 
 
 export default combineReducers({

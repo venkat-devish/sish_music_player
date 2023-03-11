@@ -13,7 +13,7 @@ const AlbumRow = ({ id }: any) => {
 
   const relatedAlbumsData = useSelector(albumsData);
   const isAlbumsFetching = useSelector(isAlbumsLoading);
-  console.log(relatedAlbumsData);
+  console.log(isAlbumsFetching);
 
   useEffect(() => {
     dispatch(getAlbumResults(id));
@@ -24,7 +24,7 @@ const AlbumRow = ({ id }: any) => {
       <ChartsRow
         isFetching={isAlbumsFetching}
         chartsDataRef={relatedAlbumsData}
-        heading="Top Artist related albums"
+        heading="Top Result Related Albums"
       />
     </div>
   );

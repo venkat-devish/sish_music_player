@@ -1,3 +1,4 @@
+import { ObjectType } from "../redux/features/recommendedSlice";
 import "../styles/results_card.scss";
 import { formatModifier } from "../utilities/format-modifier";
 import SongCard from "./SongCard";
@@ -20,7 +21,7 @@ const ResultsCard = ({ topResults, topMostResult }: any) => {
       <div className="results__songs">
         <h1>Songs</h1>
         <div className="results__songs--list">
-          {topResults.map((item: any, idx: number) => {
+          {topResults.map((item: ObjectType, idx: number) => {
             const { images, subtitle, title } = item;
             return (
               <SongCard

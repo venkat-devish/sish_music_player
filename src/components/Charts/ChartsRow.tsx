@@ -1,11 +1,15 @@
 import { useSelector } from "react-redux/es/exports";
 import { ChartsCard } from "../../organisms";
-import { chartsData, isLoading } from "../../redux/features/recommendedSlice";
+import {
+  chartsData,
+  isLoading,
+  ObjectType,
+} from "../../redux/features/recommendedSlice";
 import "../../styles/bighits.scss";
 
 type ChartsRowState = {
   isFetching: boolean;
-  chartsDataRef: any[];
+  chartsDataRef: ObjectType;
   heading: string;
 };
 
@@ -19,7 +23,7 @@ const ChartsRow = ({ isFetching, chartsDataRef, heading }: ChartsRowState) => {
         <>
           <h1 className="big-hits__heading">{heading}</h1>
           <div className="big-hits">
-            {chartsDataRef.map((item: any) => {
+            {chartsDataRef.map((item: ObjectType) => {
               const { key, images, title, subtitle } = item;
               return (
                 <ChartsCard

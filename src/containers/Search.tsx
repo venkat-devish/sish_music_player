@@ -23,7 +23,7 @@ const Search = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const _handleSearchInput = debounce((e: any) => {
     dispatch(getSearchResults(e.target.value));
-  }, 1000);
+  }, 600);
 
   const isGlobalChartsFetching = useSelector(isGlobalLoading);
   const isSearchResultLoading = useSelector(isSearching);
