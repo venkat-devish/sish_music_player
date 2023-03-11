@@ -3,8 +3,8 @@ import { formatModifier } from "../utilities/format-modifier";
 import SongCard from "./SongCard";
 
 const ResultsCard = ({ topResults, topMostResult }: any) => {
-  const { title, images, subtitle } = topMostResult[0];
-  console.log(topMostResult);
+  const { title, images, subtitle } = topMostResult;
+
   return (
     <div className="results">
       <div className="results__top">

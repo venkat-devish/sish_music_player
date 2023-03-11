@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useEffect } from "react";
 import { debounce } from "../utilities/debounce";
 import { useDispatch, useSelector } from "react-redux";
-import { getSearchResults } from "../data/api/getChartsData";
+import { getAlbumResults, getSearchResults } from "../data/api/getChartsData";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import {
   isSearching,
@@ -11,7 +11,7 @@ import {
   topMostResultData,
   topResultsData,
 } from "../redux/features/searchDataSlice";
-import { ChartsRow } from "../components";
+import { AlbumRow, ChartsRow } from "../components";
 import {
   globalCharts,
   globalTopSearchPopCharts,
@@ -31,7 +31,10 @@ const Search = () => {
   const loadedTopResults = useSelector(topResultsData);
   const loadedTopResult = useSelector(topMostResultData);
   const globalTopSearchDataRef = useSelector(globalTopSearchPopCharts);
-  console.log(loadedResults);
+
+  useEffect(() => {
+    dispatch(getAlbumResults(loadedTopResult?.id));
+  }, [loadedTopResult?.id]);
 
   useEffect(() => {
     dispatch(getSearchResults(""));
@@ -60,13 +63,14 @@ const Search = () => {
             topResults={loadedTopResults}
             topMostResult={loadedTopResult}
           />
-          // <ChartsRow
-          //   isFetching={isSearchResultLoading}
-          //   chartsDataRef={loadedResults}
-          //   heading="Results"
-          // />
         )}
       </div>
+      {loadedTopResult?.id && <AlbumRow id={loadedTopResult.id} />}
+      {/* <ChartsRow
+        isFetching={isSearchResultLoading}
+        chartsDataRef={loadedResults}
+        heading="Results"
+      /> */}
     </div>
   );
 };

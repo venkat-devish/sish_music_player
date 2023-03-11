@@ -1,11 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getSearchResults } from "../../data/api/getChartsData";
 
+type KeyType = {
+    [index: string]: any
+}
+
 type SearchState = {
     isLoading: boolean,
-    results: any[],
-    topResults: any[],
-    topMostResult: any[]
+    results: KeyType[],
+    topResults: KeyType[],
+    topMostResult: KeyType[]
 }
 
 const initialState: SearchState = {
@@ -24,14 +28,14 @@ const searchDataSlice = createSlice({
             state.isLoading = true
         }).addCase(getSearchResults.fulfilled, (state, action) => {
             const data = action.payload.hits.map((item: any) => {
-                const { title, header_image_url, artist_names: subtitle } = item.result;
+                const { primary_artist: { id }, title, header_image_url, artist_names: subtitle } = item.result;
                 const images = { 'coverarthq': header_image_url }
-                return { title, images, subtitle }
+                return { id, title, images, subtitle }
             })
             state.isLoading = false;
             state.results = data;
             state.topResults = data.slice(1, 6)
-            state.topMostResult = data.slice(0, 1)
+            state.topMostResult = data.slice(0, 1)[0]
         })
     }
 })

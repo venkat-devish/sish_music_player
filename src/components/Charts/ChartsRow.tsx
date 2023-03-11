@@ -10,6 +10,7 @@ type ChartsRowState = {
 };
 
 const ChartsRow = ({ isFetching, chartsDataRef, heading }: ChartsRowState) => {
+  console.log(isFetching, chartsDataRef);
   return (
     <>
       {isFetching ? (
