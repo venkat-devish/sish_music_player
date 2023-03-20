@@ -43,3 +43,15 @@ export function getAlbumsOptions(id: number) {
         }
     }
 }
+
+export function getArtistAlbums(id: number) {
+    return {
+        method: 'GET',
+        url: 'https://genius-song-lyrics1.p.rapidapi.com/artist/albums/',
+        params: { id, per_page: '30', page: '1' },
+        headers: {
+            'X-RapidAPI-Key': '1ad0f4702dmsha27ede3d10d9c16p12fc5djsne8e9b35154f7',
+            'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
+        }
+    }
+}

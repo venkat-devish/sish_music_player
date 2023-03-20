@@ -3,6 +3,7 @@ import recommendedReducer, { RecommendedState } from "./features/recommendedSlic
 import albumsReducer from "./features/recommendedSlice"
 import globalChartsReducer from "./features/globalChartsSlice"
 import searchReducer from "./features/searchDataSlice"
+import artistsReducer from "./features/topArtists"
 
 export type ReducerType = {
     recommended: Reducer<RecommendedState, AnyAction>
@@ -13,7 +14,8 @@ const store = configureStore({
         recommended: recommendedReducer,
         albums: albumsReducer,
         globalCharts: globalChartsReducer,
-        search: searchReducer
+        search: searchReducer,
+        artists: artistsReducer
     }
 })
 

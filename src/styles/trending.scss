@@ -1,0 +1,22 @@
+.trending {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+
+
+    padding: 1rem 1rem 1rem 2.5rem;
+    margin-left: var(--nav-bar-width);
+    width: 100%;
+    overflow-x: hidden;
+    background: var(--color-discover-bg);
+
+    &__card {
+        border-radius: 11px;
+        box-shadow: var(--color-shadow-bg-max);
+        text-align: center;
+        color: var(--text-color-primary);
+        font-weight: 800;
+        font-size: 1.5rem;
+        height: 80%
+    }
+}

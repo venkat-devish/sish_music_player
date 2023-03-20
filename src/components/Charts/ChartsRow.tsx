@@ -1,10 +1,6 @@
 import { useSelector } from "react-redux/es/exports";
 import { ChartsCard } from "../../organisms";
-import {
-  chartsData,
-  isLoading,
-  ObjectType,
-} from "../../redux/features/recommendedSlice";
+import { ObjectType } from "../../redux/features/recommendedSlice";
 import "../../styles/bighits.scss";
 
 type ChartsRowState = {
