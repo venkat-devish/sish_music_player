@@ -7,11 +7,18 @@
     font-family: "Manrope", sans-serif;
 }
 
+@mixin linear-gradient {
+    background: #176284;
+    background: -webkit-linear-gradient(top left, #176284, #0B6977);
+    background: -moz-linear-gradient(top left, #176284, #0B6977);
+}
+
 :root {
     --color-bg: #000;
     --color-card-bg: #1c1c1c;
     --color-card-bg-light: #323232;
-    --color-discover-bg: #181818;
+    --color-discover-bg: linear-gradient(to bottom right, #176284, #0B6977);
+    ;
     --color-divider-bg: #2a2929;
     --color-shadow-bg: box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 

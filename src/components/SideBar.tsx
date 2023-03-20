@@ -1,4 +1,4 @@
-import logoIcon from "../assets/sish-logo.png";
+import logoIcon from "../assets/logo.png";
 import "../styles/side_bar.scss";
 import { NavLink } from "react-router-dom";
 import { primaryButtons, secondaryButtons } from "../utilities/sidebar-buttons";
@@ -18,6 +18,7 @@ const SideBar = () => {
   return (
     <div className="sidebar">
       <img src={logoIcon} alt="Logo" />
+      <h1>sish</h1>
       <div className="sidebar__content">
         <div className="sidebar__content--primary">
           {primaryButtons.map(({ Title, Path, Icon }: PrimaryButtonProps) => {
