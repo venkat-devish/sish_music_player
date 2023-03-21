@@ -15,7 +15,7 @@ const initialState: SearchState = {
     results: [],
     topResults: [],
     topMostResult: [],
-    error: ''
+    error: '',
 } as SearchState
 
 const searchDataSlice = createSlice({

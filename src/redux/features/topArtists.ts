@@ -1,7 +1,5 @@
-// getArtistAlbums
 import { createSlice } from "@reduxjs/toolkit";
 import { getArtistAlbumResults, getGlobalCharts } from "../../data/api/getChartsData";
-import { getArtistAlbums } from "../../utilities/api-options";
 import { ObjectType } from "./recommendedSlice";
 
 export interface TopArtistsState {

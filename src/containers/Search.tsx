@@ -13,12 +13,10 @@ import {
 } from "../redux/features/searchDataSlice";
 import { AlbumRow, ChartsRow } from "../components";
 import {
-  globalCharts,
   globalTopSearchPopCharts,
   isGlobalLoading,
 } from "../redux/features/globalChartsSlice";
 import { Loading, ResultsCard } from "../organisms";
-
 import { ObjectType } from "../redux/features/recommendedSlice";
 
 const Search = () => {

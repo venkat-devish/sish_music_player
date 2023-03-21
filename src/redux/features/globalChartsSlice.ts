@@ -6,7 +6,7 @@ export interface GlobalChartsState {
     globalCharts: any[];
     globalPopCharts: any[];
     topSearchResults: any[];
-    error: string
+    error: string;
 }
 
 const initialState = {

@@ -5,7 +5,7 @@ import { ObjectType } from "./recommendedSlice";
 export interface PodcastsState {
     isLoading: boolean;
     podcasts: any[];
-    error: string
+    error: string;
 }
 
 const initialState = {

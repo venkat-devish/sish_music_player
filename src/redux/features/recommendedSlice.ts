@@ -26,7 +26,7 @@ const initialState = {
 const initialAlbumsState = {
     isLoading: false,
     recommendedAlbums: [],
-    error: ''
+    error: '',
 
 } as RecommendedAlbumState
 

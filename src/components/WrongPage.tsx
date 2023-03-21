@@ -1,5 +1,5 @@
 const WrongPage = () => {
-  return <div>WrongPage</div>;
+  return <div>NO INFORMATION AVAILABLE</div>;
 };
 
 export default WrongPage;

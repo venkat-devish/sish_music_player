@@ -2,13 +2,13 @@ import thumbnail from "../assets/thumbnail.jpg";
 import "../styles/card.scss";
 import { formatModifier } from "../utilities/format-modifier";
 
-type ChartsCardType = {
+type ChartsCartDataType = {
   imageUrl: string;
   title: string;
   description: string;
 };
 
-const ChartsCard = ({ imageUrl, title, description }: ChartsCardType) => {
+const ChartsCard = ({ imageUrl, title, description }: ChartsCartDataType) => {
   return (
     <div className="card">
       <div className="card__info">
