@@ -4,4 +4,9 @@
     width: 100%;
     overflow-x: hidden;
     background: var(--color-discover-bg);
+
+    span {
+        height: 10px;
+        border-radius: 11px;
+    }
 }

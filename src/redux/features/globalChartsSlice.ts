@@ -28,6 +28,8 @@ const globalChartsSlice = createSlice({
             state.globalCharts = tracks.slice(6, 12)
             state.globalPopCharts = tracks.slice(13, 19)
             state.topSearchResults = tracks.slice(0, 6)
+        }).addCase(getGlobalCharts.rejected, (state, action) => {
+
         })
     }
 })

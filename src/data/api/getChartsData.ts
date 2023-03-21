@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getAlbumsOptions, getArtistAlbums, getSearchOptions, globalChartsOptions, recommendedOptions } from "../../utilities/api-options";
+import { getAlbumsOptions, getArtistAlbums, getPodcastsOptions, getSearchOptions, globalChartsOptions, recommendedOptions } from "../../utilities/api-options";
 
 export const getRecommendedSongs = createAsyncThunk('recommended/getRecommendedSongs', async () => {
     const response = await axios.request(recommendedOptions)
@@ -27,5 +27,11 @@ export const getAlbumResults = createAsyncThunk('search/getAlbumResults', async 
 export const getArtistAlbumResults = createAsyncThunk('search/getArtistAlbumResults', async (id: number = 555561) => {
     const options = getArtistAlbums(id)
     const response = await axios.request(options);
+    return response.data
+})
+
+export const getPodcastsResults = createAsyncThunk('podcasts/getPodcastsResults', async () => {
+    const options = getPodcastsOptions;
+    const response = await axios.request(options)
     return response.data
 })

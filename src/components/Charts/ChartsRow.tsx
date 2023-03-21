@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux/es/exports";
 import { ChartsCard } from "../../organisms";
+import Loading from "../../organisms/Loading";
 import { ObjectType } from "../../redux/features/recommendedSlice";
 import "../../styles/bighits.scss";
 
@@ -10,11 +10,10 @@ type ChartsRowState = {
 };
 
 const ChartsRow = ({ isFetching, chartsDataRef, heading }: ChartsRowState) => {
-  console.log(isFetching, chartsDataRef);
   return (
     <>
       {isFetching ? (
-        <h1>Loading...</h1>
+        <Loading />
       ) : (
         <>
           <h1 className="big-hits__heading">{heading}</h1>

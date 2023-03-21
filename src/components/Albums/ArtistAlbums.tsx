@@ -10,7 +10,7 @@ const ArtistAlbums = () => {
   const isFetching = useSelector(isArtistAlbumsLoading);
   const albumsData = useSelector(artistAlbums);
   const { name } = useParams();
-  console.log(isFetching);
+
   return (
     <div className="discover">
       <ChartsRow

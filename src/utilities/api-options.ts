@@ -55,3 +55,14 @@ export function getArtistAlbums(id: number) {
         }
     }
 }
+
+export const getPodcastsOptions = {
+    method: 'GET',
+    url: 'https://podcast-api1.p.rapidapi.com/top_channels/v2',
+    params: { category_id: '10030', country: 'us' },
+    headers: {
+        'X-RapidAPI-Key': '1ad0f4702dmsha27ede3d10d9c16p12fc5djsne8e9b35154f7',
+        'X-RapidAPI-Host': 'podcast-api1.p.rapidapi.com'
+    }
+
+}

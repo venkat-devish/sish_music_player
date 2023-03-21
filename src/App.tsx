@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Discover, SideBar } from "./components";
 import ArtistAlbums from "./components/Albums/ArtistAlbums";
 import NowPlaying from "./components/NowPlaying";
-import { Trending, Liked, Search } from "./containers";
+import { Trending, Liked, Search, Podcasts } from "./containers";
 import {
   getGlobalCharts,
   getRecommendedSongs,
@@ -30,6 +30,7 @@ function App() {
         <Route path="search" element={<Search />} />
         <Route path="artists" element={<Trending />} />
         <Route path="albums/:name" element={<ArtistAlbums />} />
+        <Route path="podcasts" element={<Podcasts />} />
         <Route path="liked" element={<Liked />} />
       </Routes>
     </div>

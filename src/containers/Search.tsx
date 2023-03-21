@@ -18,19 +18,20 @@ import {
   isGlobalLoading,
 } from "../redux/features/globalChartsSlice";
 import { ResultsCard } from "../organisms";
+import Loading from "../organisms/Loading";
 
 const Search = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const _handleSearchInput = debounce((e: any) => {
-    dispatch(getSearchResults(e.target.value));
-  }, 600);
-
   const isGlobalChartsFetching = useSelector(isGlobalLoading);
   const isSearchResultLoading = useSelector(isSearching);
   const loadedResults = useSelector(searchResults);
   const loadedTopResults = useSelector(topResultsData);
   const loadedTopResult = useSelector(topMostResultData);
   const globalTopSearchDataRef = useSelector(globalTopSearchPopCharts);
+
+  const _handleSearchInput = debounce((e: any) => {
+    dispatch(getSearchResults(e.target.value));
+  }, 600);
 
   useEffect(() => {
     dispatch(getAlbumResults(loadedTopResult?.id));
@@ -42,29 +43,35 @@ const Search = () => {
 
   return (
     <div className="search">
-      <input
-        className="logo"
-        type="text"
-        placeholder="What do you want to listen to?"
-        onChange={_handleSearchInput}
-      />
-      <div className="search__logo">
-        <SearchIcon />
+      <div className="search__input">
+        <button className="search__input--btn search__input--btn-search">
+          <SearchIcon />
+        </button>
+        <input
+          className="logo"
+          type="text"
+          placeholder="What do you want to search?"
+          onChange={_handleSearchInput}
+        />
       </div>
-      <div className="search__grid">
-        {loadedResults.length === 0 ? (
-          <ChartsRow
-            isFetching={isGlobalChartsFetching}
-            chartsDataRef={globalTopSearchDataRef}
-            heading="Top Searched"
-          />
-        ) : (
-          <ResultsCard
-            topResults={loadedTopResults}
-            topMostResult={loadedTopResult}
-          />
-        )}
-      </div>
+      {isSearchResultLoading ? (
+        <Loading />
+      ) : (
+        <div className="search__grid">
+          {loadedResults.length === 0 ? (
+            <ChartsRow
+              isFetching={isGlobalChartsFetching}
+              chartsDataRef={globalTopSearchDataRef}
+              heading="Top Searched"
+            />
+          ) : (
+            <ResultsCard
+              topResults={loadedTopResults}
+              topMostResult={loadedTopResult}
+            />
+          )}
+        </div>
+      )}
       {loadedTopResult?.id && <AlbumRow id={loadedTopResult.id} />}
       {/* <ChartsRow
         isFetching={isSearchResultLoading}
