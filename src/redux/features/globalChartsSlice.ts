@@ -6,13 +6,15 @@ export interface GlobalChartsState {
     globalCharts: any[];
     globalPopCharts: any[];
     topSearchResults: any[];
+    error: string
 }
 
 const initialState = {
     isLoading: false,
     globalCharts: [],
     globalPopCharts: [],
-    topSearchResults: []
+    topSearchResults: [],
+    error: ''
 } as GlobalChartsState
 
 const globalChartsSlice = createSlice({
@@ -29,14 +31,15 @@ const globalChartsSlice = createSlice({
             state.globalPopCharts = tracks.slice(13, 19)
             state.topSearchResults = tracks.slice(0, 6)
         }).addCase(getGlobalCharts.rejected, (state, action) => {
-
+            state.error += action.payload
         })
     }
 })
 
 export const isGlobalLoading = (state: any): boolean => state.globalCharts.isLoading;
-export const globalCharts = (state: any): any[] => state.globalCharts.globalCharts;
-export const globalPopCharts = (state: any): any[] => state.globalCharts.globalPopCharts;
-export const globalTopSearchPopCharts = (state: any): any[] => state.globalCharts.topSearchResults;
+export const globalCharts = (state: any): GlobalChartsState[] => state.globalCharts.globalCharts;
+export const globalPopCharts = (state: any): GlobalChartsState[] => state.globalCharts.globalPopCharts;
+export const globalTopSearchPopCharts = (state: any): GlobalChartsState[] => state.globalCharts.topSearchResults;
+export const globalChartsError = (state: any) => state.globalCharts.error
 
 export default globalChartsSlice.reducer

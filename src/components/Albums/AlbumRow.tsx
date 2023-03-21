@@ -13,7 +13,6 @@ const AlbumRow = ({ id }: any) => {
 
   const relatedAlbumsData = useSelector(albumsData);
   const isAlbumsFetching = useSelector(isAlbumsLoading);
-  console.log(isAlbumsFetching);
 
   useEffect(() => {
     dispatch(getAlbumResults(id));

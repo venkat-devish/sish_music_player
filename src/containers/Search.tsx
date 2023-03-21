@@ -17,16 +17,17 @@ import {
   globalTopSearchPopCharts,
   isGlobalLoading,
 } from "../redux/features/globalChartsSlice";
-import { ResultsCard } from "../organisms";
-import Loading from "../organisms/Loading";
+import { Loading, ResultsCard } from "../organisms";
+
+import { ObjectType } from "../redux/features/recommendedSlice";
 
 const Search = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const isGlobalChartsFetching = useSelector(isGlobalLoading);
-  const isSearchResultLoading = useSelector(isSearching);
-  const loadedResults = useSelector(searchResults);
-  const loadedTopResults = useSelector(topResultsData);
-  const loadedTopResult = useSelector(topMostResultData);
+  const isGlobalChartsFetching: boolean = useSelector(isGlobalLoading);
+  const isSearchResultLoading: boolean = useSelector(isSearching);
+  const loadedResults: ObjectType = useSelector(searchResults);
+  const loadedTopResults: ObjectType = useSelector(topResultsData);
+  const loadedTopResult: ObjectType = useSelector(topMostResultData);
   const globalTopSearchDataRef = useSelector(globalTopSearchPopCharts);
 
   const _handleSearchInput = debounce((e: any) => {

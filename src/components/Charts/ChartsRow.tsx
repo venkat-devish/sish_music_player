@@ -1,5 +1,5 @@
-import { ChartsCard } from "../../organisms";
-import Loading from "../../organisms/Loading";
+import { ChartsCard, Loading } from "../../organisms";
+
 import { ObjectType } from "../../redux/features/recommendedSlice";
 import "../../styles/bighits.scss";
 

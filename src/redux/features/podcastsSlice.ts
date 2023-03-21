@@ -1,17 +1,17 @@
-// getArtistAlbums
 import { createSlice } from "@reduxjs/toolkit";
-import { getArtistAlbumResults, getGlobalCharts, getPodcastsResults } from "../../data/api/getChartsData";
-import { getArtistAlbums } from "../../utilities/api-options";
+import { getPodcastsResults } from "../../data/api/getChartsData";
 import { ObjectType } from "./recommendedSlice";
 
 export interface PodcastsState {
     isLoading: boolean;
     podcasts: any[];
+    error: string
 }
 
 const initialState = {
     isLoading: false,
     podcasts: [],
+    error: ''
 } as PodcastsState
 
 const podcastsSlice = createSlice({
@@ -29,11 +29,14 @@ const podcastsSlice = createSlice({
             })
             state.isLoading = false;
             state.podcasts = data;
+        }).addCase(getPodcastsResults.rejected, (state, action) => {
+            state.error += action.payload
         })
     }
 })
 
 export const isPodcastsLoading = (state: any): boolean => state.podcasts.isLoading;
-export const podcasts = (state: any): any[] => state.podcasts.podcasts;
+export const podcasts = (state: any): PodcastsState[] => state.podcasts.podcasts;
+export const podcastsError = (state: any) => state.podcasts.error
 
 export default podcastsSlice.reducer

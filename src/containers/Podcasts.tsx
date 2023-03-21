@@ -10,7 +10,6 @@ const Podcasts = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const podcastsData = useSelector(podcasts);
   const isPodcastsFetching = useSelector(isPodcastsLoading);
-  console.log(podcastsData);
 
   useEffect(() => {
     dispatch(getPodcastsResults());

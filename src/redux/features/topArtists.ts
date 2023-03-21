@@ -7,11 +7,13 @@ import { ObjectType } from "./recommendedSlice";
 export interface TopArtistsState {
     isLoading: boolean;
     albums: any[];
+    error: string
 }
 
 const initialState = {
     isLoading: false,
     albums: [],
+    error: ''
 } as TopArtistsState
 
 const topArtistsSlice = createSlice({
@@ -29,11 +31,14 @@ const topArtistsSlice = createSlice({
             })
             state.isLoading = false;
             state.albums = data;
+        }).addCase(getArtistAlbumResults.rejected, (state, action) => {
+            state.error += action.payload
         })
     }
 })
 
 export const isArtistAlbumsLoading = (state: any): boolean => state.artists.isLoading;
 export const artistAlbums = (state: any): any[] => state.artists.albums;
+export const artistsError = (state: any) => state.podcasts.error
 
 export default topArtistsSlice.reducer
